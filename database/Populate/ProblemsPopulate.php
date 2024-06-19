@@ -3,18 +3,18 @@
 namespace Database\Populate;
 
 use App\Models\Problem;
-use App\Models\User;
+use App\Models\Teacher;
 
 class ProblemsPopulate
 {
     public static function populate()
     {
-        $user = User::findBy(['email' => 'fulano@example.com']);
+        $teacher = Teacher::findBy(['email' => 'professor@example.com']);
 
         $numberOfProblems = 100;
 
         for ($i = 0; $i < $numberOfProblems; $i++) {
-            $problem = new Problem(['title' => 'Problem ' . $i, 'user_id' => $user->id]);
+            $problem = new Problem(['title' => 'Problem ' . $i, 'teacher_id' => $teacher->id]);
             $problem->save();
         }
 

@@ -14,9 +14,9 @@ class ProfileController extends Controller
 
     public function updateAvatar(): void
     {
-        $image = $_FILES['user_avatar'];
+        $image = $_FILES['teacher_avatar'];
 
-        $this->current_user->avatar()->update($image);
+        $this->current_teacher->avatar()->update($image);
         $this->redirectTo(route('profile.show'));
     }
 }

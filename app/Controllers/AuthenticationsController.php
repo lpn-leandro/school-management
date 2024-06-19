@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\User;
+use App\Models\Teacher;
 use Core\Http\Controllers\Controller;
 use Core\Http\Request;
 use Lib\Authentication\Auth;
@@ -19,17 +19,17 @@ class AuthenticationsController extends Controller
 
     public function authenticate(Request $request): void
     {
-        $params = $request->getParam('user');
-        $user = User::findByEmail($params['email']);
+        $params = $request->getParam('teacher');
+        $teacher = Teacher::findByEmail($params['email']);
 
-        if ($user && $user->authenticate($params['password'])) {
-            Auth::login($user);
+        if ($teacher && $teacher->authenticate($params['password'])) {
+            Auth::login($teacher);
 
             FlashMessage::success('Login realizado com sucesso!');
             $this->redirectTo(route('problems.index'));
         } else {
             FlashMessage::danger('Email e/ou senha inválidos!');
-            $this->redirectTo(route('users.login'));
+            $this->redirectTo(route('teachers.login'));
         }
     }
 
@@ -37,6 +37,6 @@ class AuthenticationsController extends Controller
     {
         Auth::logout();
         FlashMessage::success('Logout realizado com sucesso!');
-        $this->redirectTo(route('users.login'));
+        $this->redirectTo(route('teachers.login'));
     }
 }

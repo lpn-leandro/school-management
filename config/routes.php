@@ -7,8 +7,8 @@ use App\Controllers\ReinforceProblemsController;
 use Core\Router\Route;
 
 // Authentication
-Route::get('/login', [AuthenticationsController::class, 'new'])->name('users.login');
-Route::post('/login', [AuthenticationsController::class, 'authenticate'])->name('users.authenticate');
+Route::get('/login', [AuthenticationsController::class, 'new'])->name('teachers.login');
+Route::post('/login', [AuthenticationsController::class, 'authenticate'])->name('teachers.authenticate');
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [ProblemsController::class, 'index'])->name('root');
@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/problems/{id}', [ProblemsController::class, 'destroy'])->name('problems.destroy');
 
     // Logout
-    Route::get('/logout', [AuthenticationsController::class, 'destroy'])->name('users.logout');
+    Route::get('/logout', [AuthenticationsController::class, 'destroy'])->name('teachers.logout');
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');

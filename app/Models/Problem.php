@@ -10,23 +10,23 @@ use Core\Database\ActiveRecord\Model;
 /**
  * @property int $id
  * @property string $title
- * @property int $user_id
- * @property User $user
- * @property User[] $reinforced_by_users
+ * @property int $teacher_id
+ * @property Teacher $teacher
+ * @property Teacher[] $reinforced_by_teachers
  */
 class Problem extends Model
 {
     protected static string $table = 'problems';
-    protected static array $columns = ['title', 'user_id'];
+    protected static array $columns = ['title', 'teacher_id'];
 
-    public function user(): BelongsTo
+    public function teacher(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Teacher::class, 'teacher_id');
     }
 
-    public function reinforcedByUsers(): BelongsToMany
+    public function reinforcedByTeachers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'problem_user_reinforce', 'problem_id', 'user_id');
+        return $this->belongsToMany(Teacher::class, 'problem_teacher_reinforce', 'problem_id', 'teacher_id');
     }
 
     public function validates(): void
@@ -34,8 +34,8 @@ class Problem extends Model
         Validations::notEmpty('title', $this);
     }
 
-    public function isSupportedByUser(User $user): bool
+    public function isSupportedByTeacher(Teacher $teacher): bool
     {
-        return ProblemUserReinforce::exists(['problem_id' => $this->id, 'user_id' => $user->id]);
+        return ProblemTeacherReinforce::exists(['problem_id' => $this->id, 'teacher_id' => $teacher->id]);
     }
 }

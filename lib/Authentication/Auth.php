@@ -2,20 +2,20 @@
 
 namespace Lib\Authentication;
 
-use App\Models\User;
+use App\Models\Teacher;
 
 class Auth
 {
-    public static function login($user): void
+    public static function login($teacher): void
     {
-        $_SESSION['user']['id'] = $user->id;
+        $_SESSION['teacher']['id'] = $teacher->id;
     }
 
-    public static function user(): ?User
+    public static function teacher(): ?Teacher
     {
-        if (isset($_SESSION['user']['id'])) {
-            $id = $_SESSION['user']['id'];
-            return User::findById($id);
+        if (isset($_SESSION['teacher']['id'])) {
+            $id = $_SESSION['teacher']['id'];
+            return Teacher::findById($id);
         }
 
         return null;
@@ -23,11 +23,11 @@ class Auth
 
     public static function check(): bool
     {
-        return isset($_SESSION['user']['id']) && self::user() !== null;
+        return isset($_SESSION['teacher']['id']) && self::teacher() !== null;
     }
 
     public static function logout(): void
     {
-        unset($_SESSION['user']['id']);
+        unset($_SESSION['teacher']['id']);
     }
 }
