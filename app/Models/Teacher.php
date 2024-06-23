@@ -19,7 +19,8 @@ use Core\Database\ActiveRecord\Model;
 class Teacher extends Model
 {
     protected static string $table = 'teachers';
-    protected static array $columns = ['name', 'email', 'encrypted_password', 'gender', 'birth_date', 'profile_picture'];
+    protected static array $columns = ['name', 'email', 'encrypted_password', 'gender', 'birth_date',
+     'profile_picture'];
 
     protected ?string $password = null;
     protected ?string $password_confirmation = null;
