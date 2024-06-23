@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Models\Teachers;
+namespace tests\Unit\Models\Teachers;
 
 use App\Models\Problem;
 use App\Models\ProblemTeacherReinforce;
