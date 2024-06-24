@@ -76,7 +76,7 @@ class TeacherTest extends TestCase
         $this->teacher->email = 'outro@example.com';
         $this->assertEquals('outro@example.com', $this->teacher->email);
     }
-    
+
     public function test_set_gender(): void
     {
         $this->teacher->gender = 'Feminino';
@@ -88,7 +88,7 @@ class TeacherTest extends TestCase
         $this->teacher->birth_date = '1999-01-03';
         $this->assertEquals('1999-01-03', $this->teacher->birth_date);
     }
-    
+
     public function test_errors_should_return_errors(): void
     {
         $teacher = new Teacher();
