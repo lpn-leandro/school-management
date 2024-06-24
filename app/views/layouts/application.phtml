@@ -18,14 +18,14 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="<?= route('root') ?>">Problem Track</a>
 
-            <?php if ($this->current_user) : ?>
+            <?php if ($this->current_teacher) : ?>
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" aria-expanded="false">
-                        <?= $this->current_user->email ?>
+                        <?= $this->current_teacher->email ?>
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="<?= route('profile.show') ?>">Profile</a>
-                        <a class="dropdown-item" href="<?= route('users.logout') ?>">Sair</a>
+                        <a class="dropdown-item" href="<?= route('teachers.logout') ?>">Sair</a>
                     </div>
                 </div>
             <?php endif; ?>

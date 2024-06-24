@@ -1,3 +1,17 @@
 .card.login {
-  width: 24rem;
+  width: 33rem;
+  border: 0;
+  background-color: #f8f8f8;
+}
+
+h2 {
+  font-size: 1.964rem;
+}
+
+p {
+  color: #6C757D
+}
+
+.d-grid {
+  margin-top: 4rem !important;
 }

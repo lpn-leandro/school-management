@@ -95,21 +95,23 @@ class RouterTest extends TestCase
         $router = Router::getInstance();
         $router->addRoute(new Route('GET', '/test/{id}', MockController::class, 'action'))->name('test');
         $router->addRoute(
-            new Route('GET', '/test/{user_id}/test-1/{id}', MockController::class, 'action')
+            new Route('GET', '/test/{teacher_id}/test-1/{id}', MockController::class, 'action')
         )->name('test.one');
 
         $this->assertEquals('/test/1', $router->getRoutePathByName('test', ['id' => 1]));
-        $this->assertEquals('/test/2/test-1/1', $router->getRoutePathByName('test.one', ['id' => 1, 'user_id' => 2]));
+        $this->assertEquals('/test/2/test-1/1', $router->getRoutePathByName('test.one', ['id' => 1,
+         'teacher_id' => 2]));
     }
 
     public function test_should_get_route_path_by_name_with_params_with_different_order(): void
     {
         $router = Router::getInstance();
         $router->addRoute(
-            new Route('GET', '/test/{user_id}/test-1/{id}', MockController::class, 'action')
+            new Route('GET', '/test/{teacher_id}/test-1/{id}', MockController::class, 'action')
         )->name('test.one');
 
-        $this->assertEquals('/test/2/test-1/1', $router->getRoutePathByName('test.one', ['id' => 1, 'user_id' => 2,]));
+        $this->assertEquals('/test/2/test-1/1', $router->getRoutePathByName('test.one', ['id' => 1,
+         'teacher_id' => 2,]));
     }
 
     public function test_should_get_route_path_by_name_with_params_and_query_params(): void

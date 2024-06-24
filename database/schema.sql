@@ -1,13 +1,15 @@
 SET foreign_key_checks = 0;
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS teachers;
 
-CREATE TABLE users (
+CREATE TABLE teachers (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL,
     encrypted_password VARCHAR(255) NOT NULL,
-    avatar_name VARCHAR(65)
+    gender VARCHAR(65),
+    profile_picture VARCHAR(65),
+    birth_date DATE
 );
 
 DROP TABLE IF EXISTS problems;
@@ -15,15 +17,15 @@ DROP TABLE IF EXISTS problems;
 CREATE TABLE problems (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE
+    teacher_id INT NOT NULL REFERENCES teachers(id) ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS problem_user_reinforce;
+DROP TABLE IF EXISTS problem_teacher_reinforce;
 
-CREATE TABLE problem_user_reinforce (
+CREATE TABLE problem_teacher_reinforce (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL REFERENCES users(id) ON DELETE RESTRICT,
-    problem_id INT NOT NULL REFERENCES users(id) ON DELETE RESTRICT
+    teacher_id INT NOT NULL REFERENCES teachers(id) ON DELETE RESTRICT,
+    problem_id INT NOT NULL REFERENCES teachers(id) ON DELETE RESTRICT
 );
 
 SET foreign_key_checks = 1;

@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Problem;
-use App\Models\ProblemUserReinforce;
+use App\Models\ProblemTeacherReinforce;
 use Core\Http\Controllers\Controller;
 use Core\Http\Request;
 use Lib\FlashMessage;
@@ -22,7 +22,7 @@ class ReinforceProblemsController extends Controller
 
     public function supported(): void
     {
-        $problems = $this->current_user->reinforced_problems;
+        $problems = $this->current_teacher->reinforced_problems;
         $title = 'Problemas Suportados';
 
         $this->render('reinforce_problems/supported', compact('problems', 'title'));
@@ -32,14 +32,14 @@ class ReinforceProblemsController extends Controller
     {
         $problem_id = $request->getParam('id');
 
-        $problemReinforce = new ProblemUserReinforce(
-            ['user_id' => $this->current_user->id, 'problem_id' => $problem_id]
+        $problemReinforce = new ProblemTeacherReinforce(
+            ['teacher_id' => $this->current_teacher->id, 'problem_id' => $problem_id]
         );
 
         if ($problemReinforce->save()) {
             FlashMessage::success('Problema suportado com sucesso.');
         } else {
-            $message = $problemReinforce->errors('user_id');
+            $message = $problemReinforce->errors('teacher_id');
             FlashMessage::danger('Erro ao suportar problema: ' . $message);
         }
 
@@ -50,8 +50,8 @@ class ReinforceProblemsController extends Controller
     {
         $problem_id = $request->getParam('id');
 
-        $problemReinforce = ProblemUserReinforce::findBy(
-            ['user_id' => $this->current_user->id, 'problem_id' => $problem_id]
+        $problemReinforce = ProblemTeacherReinforce::findBy(
+            ['teacher_id' => $this->current_teacher->id, 'problem_id' => $problem_id]
         );
 
         if ($problemReinforce == null) {

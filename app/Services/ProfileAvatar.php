@@ -17,8 +17,8 @@ class ProfileAvatar
 
     public function path(): string
     {
-        if ($this->model->avatar_name) {
-            return $this->baseDir() . $this->model->avatar_name;
+        if ($this->model->profile_picture) {
+            return $this->baseDir() . $this->model->profile_picture;
         }
 
         return "/assets/images/defaults/avatar.png";
@@ -33,7 +33,7 @@ class ProfileAvatar
 
         if (!empty($this->getTmpFilePath())) {
             $this->removeOldImage();
-            $this->model->update(['avatar_name' => $this->getFileName()]);
+            $this->model->update(['profile_picture' => $this->getFileName()]);
             move_uploaded_file($this->getTmpFilePath(), $this->getAbsoluteFilePath());
         }
     }
@@ -45,8 +45,8 @@ class ProfileAvatar
 
     private function removeOldImage(): void
     {
-        if ($this->model->avatar_name) {
-            $path = Constants::rootPath()->join('public' . $this->baseDir())->join($this->model->avatar_name);
+        if ($this->model->profile_picture) {
+            $path = Constants::rootPath()->join('public' . $this->baseDir())->join($this->model->profile_picture);
             unlink($path);
         }
     }

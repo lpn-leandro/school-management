@@ -176,7 +176,7 @@ class RouteTest extends TestCase
     public function test_match_should_return_true_using_query_params(): void
     {
         $route = new Route(method: 'GET', uri: '/test', controllerName: 'MockController', actionName: 'show');
-        $request = $this->request('GET', '/test?user_id=1&id=2');
+        $request = $this->request('GET', '/test?teacher_id=1&id=2');
 
         $this->assertTrue($route->match($request));
     }

@@ -59,7 +59,7 @@ class RequestTest extends TestCase
 
         $this->assertEquals($params, $request->getParams());
 
-        $otherParams = ['user_id' => 1];
+        $otherParams = ['teacher_id' => 1];
         $request->addParams($otherParams);
 
         $this->assertEquals(array_merge($params, $otherParams), $request->getParams());

@@ -10,7 +10,7 @@ class ProblemsController extends Controller
 {
     public function index(Request $request): void
     {
-        $paginator = $this->current_user->problems()->paginate(page: $request->getParam('page', 1));
+        $paginator = $this->current_teacher->problems()->paginate(page: $request->getParam('page', 1));
         $problems = $paginator->registers();
 
         $title = 'Problemas Registrados';
@@ -26,7 +26,7 @@ class ProblemsController extends Controller
     {
         $params = $request->getParams();
 
-        $problem = $this->current_user->problems()->findById($params['id']);
+        $problem = $this->current_teacher->problems()->findById($params['id']);
 
         $title = "Visualização do Problema #{$problem->id}";
         $this->render('problems/show', compact('problem', 'title'));
@@ -34,7 +34,7 @@ class ProblemsController extends Controller
 
     public function new(): void
     {
-        $problem = $this->current_user->problems()->new();
+        $problem = $this->current_teacher->problems()->new();
 
         $title = 'Novo Problema';
         $this->render('problems/new', compact('problem', 'title'));
@@ -43,7 +43,7 @@ class ProblemsController extends Controller
     public function create(Request $request): void
     {
         $params = $request->getParams();
-        $problem = $this->current_user->problems()->new($params['problem']);
+        $problem = $this->current_teacher->problems()->new($params['problem']);
 
         if ($problem->save()) {
             FlashMessage::success('Problema registrado com sucesso!');
@@ -58,7 +58,7 @@ class ProblemsController extends Controller
     public function edit(Request $request): void
     {
         $params = $request->getParams();
-        $problem = $this->current_user->problems()->findById($params['id']);
+        $problem = $this->current_teacher->problems()->findById($params['id']);
 
         $title = "Editar Problema #{$problem->id}";
         $this->render('problems/edit', compact('problem', 'title'));
@@ -69,7 +69,7 @@ class ProblemsController extends Controller
         $id = $request->getParam('id');
         $params = $request->getParam('problem');
 
-        $problem = $this->current_user->problems()->findById($id);
+        $problem = $this->current_teacher->problems()->findById($id);
         $problem->title = $params['title'];
 
         if ($problem->save()) {
@@ -86,7 +86,7 @@ class ProblemsController extends Controller
     {
         $params = $request->getParams();
 
-        $problem = $this->current_user->problems()->findById($params['id']);
+        $problem = $this->current_teacher->problems()->findById($params['id']);
         $problem->destroy();
 
         FlashMessage::success('Problema removido com sucesso!');
