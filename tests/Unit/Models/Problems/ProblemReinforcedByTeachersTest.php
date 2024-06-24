@@ -19,7 +19,9 @@ class ProblemReinforcedByTeachersTest extends TestCase
             'name' => 'Professor 1',
             'email' => 'professor@example.com',
             'password' => '123456',
-            'password_confirmation' => '123456'
+            'password_confirmation' => '123456',
+            'gender' => 'Masculino',
+            'birth_date' => '1999-01-02',
         ]);
         $this->teacher->save();
 
@@ -50,7 +52,9 @@ class ProblemReinforcedByTeachersTest extends TestCase
             'name' => 'Professor 2',
             'email' => 'professor2@example.com',
             'password' => '123456',
-            'password_confirmation' => '123456'
+            'password_confirmation' => '123456',
+            'gender' => 'Masculino',
+            'birth_date' => '1999-01-02',
         ]);
         $teacher->save();
 

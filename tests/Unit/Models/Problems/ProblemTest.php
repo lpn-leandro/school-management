@@ -18,7 +18,9 @@ class ProblemTest extends TestCase
             'name' => 'Professor 1',
             'email' => 'professor@example.com',
             'password' => '123456',
-            'password_confirmation' => '123456'
+            'password_confirmation' => '123456',
+            'gender' => 'Masculino',
+            'birth_date' => '1999-01-02',
         ]);
         $this->teacher->save();
 

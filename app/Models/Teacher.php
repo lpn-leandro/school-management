@@ -13,6 +13,8 @@ use Core\Database\ActiveRecord\Model;
  * @property string $name
  * @property string $email
  * @property string $encrypted_password
+ * @property string $gender
+ * @property string $birth_date
  * @property Problem[] $problems
  * @property Problem[] $reinforced_problems
  */
@@ -39,6 +41,8 @@ class Teacher extends Model
     {
         Validations::notEmpty('name', $this);
         Validations::notEmpty('email', $this);
+        Validations::notEmpty('gender', $this);
+        Validations::notEmpty('birth_date', $this);
 
         Validations::uniqueness('email', $this);
 
