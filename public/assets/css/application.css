@@ -16,7 +16,7 @@ nav.navbar {
 .sidebar {
   width: 250px;
   position: fixed;
-  top: 55px;
+  top: 3.34rem;
   bottom: 0;
   left: 0;
   z-index: 100;
@@ -27,4 +27,59 @@ nav.navbar {
 .avatar {
   width: 315px;
   height: 315px;
+}
+
+.img-navbar {
+  width: 40px;
+  height: 40px;
+  background-color: #F8F8F8;
+  border-radius: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  margin-left: 1rem;
+}
+
+.nav-item-selection {
+  background-color: white;
+  border: solid 1px #E0E0E0;
+  list-style: none;
+  -webkit-box-shadow: 0px 8px 9px -6px rgba(125,125,125,0.75);
+  -moz-box-shadow: 0px 8px 9px -6px rgba(125,125,125,0.75);
+  box-shadow: 0px 8px 9px -6px rgba(125,125,125,0.75);
+}
+
+.nav-item-selection a, .nav-item-selection a:hover {
+  color: black;
+}
+
+.dropdown-toggle, .dropdown-toggle:hover, .dropdown-toggle:focus{
+  color: white;
+}
+
+.nav-item-selection:hover {
+  background-color: #F8F8F8;
+  color: black;
+  font-weight: bold;
+}
+
+.card-icon i {
+  font-size: 5rem;;
+}
+
+.card-body p {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.card {
+  border-radius: unset;
+  -webkit-box-shadow: 0px 8px 9px -6px rgba(125,125,125,0.75);
+  -moz-box-shadow: 0px 8px 9px -6px rgba(125,125,125,0.75);
+  box-shadow: 0px 8px 9px -6px rgba(125,125,125,0.75);
+  list-style: none;
+
+}
+
+.col-sm-6 a {
+  text-decoration: none;
 }

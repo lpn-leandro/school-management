@@ -13,12 +13,12 @@ class ProblemsController extends Controller
         $paginator = $this->current_teacher->problems()->paginate(page: $request->getParam('page', 1));
         $problems = $paginator->registers();
 
-        $title = 'Problemas Registrados';
+        $title = 'Home';
 
         if ($request->acceptJson()) {
-            $this->renderJson('problems/index', compact('paginator', 'problems', 'title'));
+            $this->renderJson('home/index', compact('paginator', 'problems', 'title'));
         } else {
-            $this->render('problems/index', compact('paginator', 'problems', 'title'));
+            $this->render('home/index', compact('paginator', 'problems', 'title'));
         }
     }
 

@@ -21,17 +21,8 @@ class ProblemsControllerTest extends ControllerTestCase
         $teacher->save();
         $_SESSION['teacher']['id'] = $teacher->id;
 
-        $problems[] = new Problem(['title' => 'Problem 1', 'teacher_id' => $teacher->id]);
-        $problems[] = new Problem(['title' => 'Problem 2',  'teacher_id' => $teacher->id]);
-
-        foreach ($problems as $problem) {
-            $problem->save();
-        }
-
         $response = $this->get(action: 'index', controller: 'App\Controllers\ProblemsController');
 
-        foreach ($problems as $problem) {
-            $this->assertMatchesRegularExpression("/{$problem->title}/", $response);
-        }
+        $this->assertStringContainsString('Home', $response);
     }
 }

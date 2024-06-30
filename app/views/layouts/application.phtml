@@ -14,14 +14,15 @@
 </head>
 
 <body>
-    <nav class="navbar fixed-top">
+    <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="<?= route('root') ?>">Problem Track</a>
+            <a class="navbar-brand" href="<?= route('root') ?>">School Management</a>
 
             <?php if ($this->current_teacher) : ?>
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" aria-expanded="false">
-                        <?= $this->current_teacher->email ?>
+                        <?= $this->current_teacher->name ?>
+                        <img class="img-navbar" src="<?= $this->current_teacher->avatar()->path() ?>" alt="avatar" class="d-inline-block align-text-top">
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="<?= route('profile.show') ?>">Profile</a>
@@ -38,14 +39,18 @@
             <aside class="col-auto sidebar">
                 <nav>
                     <ul class="nav flex-column mt-1">
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= route('problems.index') ?>">Meus problemas</a>
+                        <li class="nav-item nav-item-selection">
+                            <a class="icon-link nav-link" href="<?= route('problems.index') ?>"><i class="bi bi-house-door"></i>
+                            Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= route('reinforce.problems.supported') ?>">Problemas Apoiados</a>
+                        <li class="nav-item nav-item-selection">
+                            <!-- Altere o href para a rota de turmas -->
+                            <a class="nav-link" href="<?= route('problems.index') ?>"> <i class="bi bi-book"></i>
+                            Turmas</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= route('reinforce.problems') ?>">Todos Problemas</a>
+                        <li class="nav-item nav-item-selection">
+                            <a class="nav-link" href="<?= route('profile.show') ?>"><i class="bi bi-person"></i>
+                            Perfil</a>
                         </li>
                     </ul>
                 </nav>
